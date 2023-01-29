@@ -6,9 +6,9 @@ const questionController = require('../../../controller/api/v1/questionControlle
 
 router.post('/createQuestion', questionController.createQuestion);
 
-router.get('/:id', questionController.viewQuestion);
+router.get('/:id/view', questionController.viewQuestion);
 
 router.delete('/:id/delete', questionController.deleteQuestion);
 
 
-module.export = router;
+module.exports = router;
