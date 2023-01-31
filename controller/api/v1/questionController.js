@@ -53,10 +53,10 @@ module.exports.deleteQuestion = async function(req, res) {
 
         if(question){
             
-            let options = queston.options;
+            let options = question.options;
 
             for(let i = 0; i < options.length; i++){
-                if(option[i].votes > 0){
+                if(options[i].votes > 0){
                     return res.status(404).json({
                         data: {
                             message: "question option has some votes, Not Possible to delete",
