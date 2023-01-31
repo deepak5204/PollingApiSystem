@@ -4,7 +4,7 @@ const router = express.Router();
 
 const questionController = require('../../../controller/api/v1/questionController');
 
-router.post('/createQuestion', questionController.createQuestion);
+router.post('/create_question', questionController.createQuestion);
 
 router.get('/:id/view', questionController.viewQuestion);
 
