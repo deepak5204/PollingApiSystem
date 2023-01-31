@@ -1,4 +1,5 @@
 const Question = require('../../../models/questions');
+const Option = require("../../../models/options");
 
 //create question
 module.exports.createQuestion = async function(req, res) {
