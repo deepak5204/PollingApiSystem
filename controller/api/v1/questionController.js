@@ -27,7 +27,7 @@ module.exports.createQuestion = async function(req, res) {
 
 //View question
 module.exports.viewQuestion = async function(req, res) {
-    console.log("view Question");
+    // console.log("view Question");
     try{
         let question = await Question.findById(req.params.id).populate("options");
         return res.json({ question });
