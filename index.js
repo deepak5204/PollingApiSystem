@@ -13,7 +13,7 @@ app.use("/", require("./routes/index"));
 
 app.listen(port, (err) =>{
     if(err){
-        console.log("server is running on port 8000");
+        console.log("");
     }
     console.log("server is running on port 8000");
     });
