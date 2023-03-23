@@ -3,7 +3,7 @@ const Question = require('../../../models/questions');
 const Option = require('../../../models/options');
 
 //create option for question using provided id
-module.exports.createOption = async function(req, res){
+module.exports.createOption = async (req, res) => {
     console.log("create option");
     try{
         let id = req.params.id;
@@ -37,7 +37,7 @@ module.exports.createOption = async function(req, res){
 
 
 //delete an option on the basis of its id
-module.exports.optionDelete = async function(req, res){
+module.exports.optionDelete = async (req, res) => {
     // console.log("delete options");
     try{
         let id = req.params.id;
@@ -81,7 +81,7 @@ module.exports.optionDelete = async function(req, res){
 
 
 //adding vote to an option for particular question 
-module.exports.addVote = async function(req, res) {
+module.exports.addVote = async (req, res) => {
     console.log("add vote");
     try {
         let id = req.params.id;
