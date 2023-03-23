@@ -3,7 +3,6 @@ const Option = require("../../../models/options");
 
 //create question
 module.exports.createQuestion = async function (req, res) {
-  console.log("create Question");
   try {
     let question = await Question.create(req.body);
 
@@ -27,7 +26,6 @@ module.exports.createQuestion = async function (req, res) {
 
 //View question
 module.exports.viewQuestion = async (req, res) => {
-  // console.log("view Question");
   try {
     let question = await Question.findById(req.params.id).populate("options");
     res.status(200).json({
@@ -48,7 +46,6 @@ module.exports.viewQuestion = async (req, res) => {
 
 // vieq all question
 module.exports.getAllQuestions = async (req, res) =>{
-    // console.log('View all question'); 
     try{
         const questions = await Question.find(); 
         res.status(200).json({
@@ -65,7 +62,6 @@ module.exports.getAllQuestions = async (req, res) =>{
 
 // Delete question
 module.exports.deleteQuestion = async  (req, res) => {
-  console.log("delete Question");
   try {
     let id = req.params.id;
     let question = await Question.findById(id).populate({
