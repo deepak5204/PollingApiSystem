@@ -64,7 +64,7 @@ module.exports.getAllQuestions = async (req, res) =>{
 }
 
 // Delete question
-module.exports.deleteQuestion = async function (req, res) {
+module.exports.deleteQuestion = async  (req, res) => {
   console.log("delete Question");
   try {
     let id = req.params.id;
@@ -89,14 +89,14 @@ module.exports.deleteQuestion = async function (req, res) {
       await Option.deleteMany({ question: id });
       await Question.findByIdAndDelete(id);
 
-      return res.status(200).json({
+      res.status(200).json({
         message: "Question deleted successfully",
       });
     } else {
-      return res.status(404).json({ message: "Question not found" });
+        res.status(404).json({ message: "Question not found" });
     }
   } catch (err) {
-    return res.status(500).json({
+      res.status(500).json({
       message: "Internal server error, deleting question",
     });
   }

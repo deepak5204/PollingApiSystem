@@ -4,7 +4,7 @@ const Option = require('../../../models/options');
 
 //create option for question using provided id
 module.exports.createOption = async function(req, res){
-    // console.log("create option");
+    console.log("create option");
     try{
         let id = req.params.id;
         let question = await Question.findById(id);
@@ -20,14 +20,14 @@ module.exports.createOption = async function(req, res){
            question.options.push(option);
            question.save();
 
-           return res.json({
+        res.status(200).json({
             option,
             data: {
                 message: "option created",
             },
            });
         }
-        return res.json({question});
+        res.status(200).json({question});
     } catch(err){
         console.log("Error : ",err);
         return;
@@ -50,7 +50,7 @@ module.exports.optionDelete = async function(req, res){
         // if option present then check for vote
         // if option has vote then don't delete
         if(option.votes > 0){
-            return res.status(404).json({
+            res.status(404).json({
                 data: {
                     message: "Can't delete! It has vote"
                 },
@@ -64,14 +64,14 @@ module.exports.optionDelete = async function(req, res){
 
         // delete option from option
         await Option.findByIdAndDelete(id);
-        return res.status(200).json({
+        res.status(200).json({
             data: {
                 message: "Option deleted successfully"
             },
         });
     }
     catch (err) {
-        return res.status(500).json({
+        res.status(500).json({
             data: {
                 message: "Internal server error"
             },
@@ -89,16 +89,16 @@ module.exports.addVote = async function(req, res) {
         //find option if present then vote to it
         await Option.findByIdAndUpdate(id, {$inc: { votes : 1}});
 
-        return res.status(200).json({
+        res.status(200).json({
             data: {
                 message: "Voted Successfully"
-            },
+            }
         });
     } catch (err){
-        return res.status(500).json({
+        res.status(500).json({
             data: {
                 message: "Internal server error"
-            },
+            }
         });
     } 
 };
