@@ -42,7 +42,6 @@ module.exports.optionDelete = async (req, res) => {
 
         //chek and find option exits or not
         let option = await Option.findById(id);
-        console.log(option);
         
 
         // if option present then check for vote
@@ -57,7 +56,7 @@ module.exports.optionDelete = async (req, res) => {
 
         // delete option from Question's options array
         await Question.findByIdAndUpdate(option.question, {
-            $pull: {options: id },
+            $pull: {options: id }
         });
 
         // delete option from option
